@@ -41,18 +41,18 @@ public:
     }
 
     line_iterator operator++(int) {  // postfix ++
-        line_iterator  tmp = *this;
+        line_iterator  tmp = *this; // prev
         read();
         return tmp;
     }
 
-    bool operator==(const line_iterator& i) const {
-        return (in == i.in && at_end == i.at_end) ||
-               (at_end == false && i.at_end == false);
+    bool operator==(const line_iterator& rhs) const {
+        return (in == rhs.in && at_end == rhs.at_end) ||
+               (at_end == false && rhs.at_end == false);
     }
 
-    bool operator!=(const line_iterator& i) const {
-        return !(*this == i);
+    bool operator!=(const line_iterator& rhs) const {
+        return !(*this == rhs);
     }
 }; // end  of class line_iterator
 
@@ -63,12 +63,15 @@ int  main()
     line_iterator  iter(cin);
     line_iterator  end_of_file;
 
-    vector<string>  V(iter, end_of_file);
+    for(auto i = iter; i != end_of_file; i++)
+        cout << *i;
 
-    sort( V.begin(), V.end() ); // sort( V.begin(), V.end(), greater<string>() );
-    copy( V.begin(), V.end(), ostream_iterator<string>(cout, "\n"));
+    // vector<string>  V(iter, end_of_file);
 
-    cout << ((float)clock() - start) / CLOCKS_PER_SEC << " sec" << endl;
+    // sort( V.begin(), V.end() ); // sort( V.begin(), V.end(), greater<string>() );
+    // copy( V.begin(), V.end(), ostream_iterator<string>(cout, "\n"));
+
+    // cout << ((float)clock() - start) / CLOCKS_PER_SEC << " sec" << endl;
 
     return 0;
 }
