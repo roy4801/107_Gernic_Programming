@@ -15,3 +15,4 @@ iterator:
 
 clean:
 	rm -f Iterator/Iterator Alternative/Alternative
+	rm -f Iterator/*.exe Alternative/*.exe

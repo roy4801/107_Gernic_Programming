@@ -83,7 +83,7 @@ int main()
     printf("Sorting using %f s\n", T_SEC());
 
     // Write the lines to standard output
-    for_each( lines.begin(), lines.end(), strtab_print(cout) );
+    // for_each( lines.begin(), lines.end(), strtab_print(cout) );
 
     return 0;
 }
