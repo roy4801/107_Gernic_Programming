@@ -8,6 +8,9 @@
 #include <ctime>
 
 #define TIME
+#define PB push_back
+#define MP make_pair
+#define P pair
 
 using namespace std;
 
@@ -37,29 +40,40 @@ struct  strtab_print
 
 int main()
 {
-    vector<char>  strtab;	   // Create string table
-    char  c;
+    vector <char> strtab;	   // Create string table
+    typedef  vector<char>::iterator  strtab_iterator;
+    char c;
 
     while (cin.get(c)) {
-        strtab.push_back(c);
+        strtab.PB(c);
     }
 
     // Parse the string table into lines.
-    typedef  vector<char>::iterator  strtab_iterator;
-    vector<pair<strtab_iterator, strtab_iterator>> lines;
+    vector< P<strtab_iterator, strtab_iterator> > lines;
     strtab_iterator  start = strtab.begin();
 
     while (start != strtab.end()) {
-        strtab_iterator  next = find( start, strtab.end(), '\n' );
+        strtab_iterator next = find( start, strtab.end(), '\n' );
 
         if (next != strtab.end())
             ++next;
-        lines.push_back( make_pair( start, next ) );
+        lines.PB(MP( start, next ) );
         start = next;
     }
 
+    #ifdef TIME
+    clock_t t;
+    t = clock();
+    #endif
+
     // Sort the vector of lines
-    sort( lines.begin(), lines.end(), strtab_cmp() );
+    sort( lines.begin(), lines.end(), strtab_cmp() );//function object
+
+    #ifdef TIME
+    t = clock() - t;
+    cout << "sort time:" << ((float) t)/CLOCKS_PER_SEC << " seconds.\n";
+    t = clock();
+    #endif
 
     // Write the lines to standard output
     for_each( lines.begin(), lines.end(), strtab_print(cout) );
