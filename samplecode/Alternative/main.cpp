@@ -66,10 +66,13 @@ int main()
         start = next;
     }
     T_END();
-    printf("Pass = %f\n", getSec());
+    printf("Tokenize the string using %f s\n", T_SEC());
 
     // Sort the vector of lines
+    T_START();
     sort( lines.begin(), lines.end(), strtab_cmp() );
+    T_END();
+    printf("Sorting using %f s\n", T_SEC());
 
     // Write the lines to standard output
     for_each( lines.begin(), lines.end(), strtab_print(cout) );
