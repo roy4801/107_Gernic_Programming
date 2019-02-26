@@ -7,6 +7,12 @@
 #include <string>
 #include <ctime>
 
+
+#define TIME
+#define PB push_back
+#define MP make_pair
+#define P pair
+
 #if defined(__APPLE__)
 #include <unistd.h>
 #endif
@@ -15,7 +21,6 @@
 #include <calcTime.h>
 
 using namespace std;
-
 
 struct  strtab_cmp
 {
@@ -42,35 +47,38 @@ struct  strtab_print
 
 int main()
 {
+    #if defined(__APPLE__)
     setvbuf(stdout, NULL, _IONBF, 0);
+    #endif
 
     vector<char>  strtab;	   // Create string table
     char  c;
 
     while (cin.get(c)) {
-        strtab.push_back(c);
+        strtab.PB(c);
     }
 
     // Parse the string table into lines.
     using strtab_iterator = vector<char>::iterator;
     vector<pair<strtab_iterator, strtab_iterator>> lines;
+
     strtab_iterator  start = strtab.begin();
 
     T_START();
-    while (start != strtab.end()) {
-        strtab_iterator  next = find( start, strtab.end(), '\n' );
+        while (start != strtab.end()) {
+            strtab_iterator next = find( start, strtab.end(), '\n' );
 
-        if (next != strtab.end())
-            ++next;
-        lines.push_back( make_pair( start, next ) );
-        start = next;
-    }
+            if (next != strtab.end())
+                ++next;
+            lines.PB(MP( start, next ) );
+            start = next;
+        }
     T_END();
     printf("Tokenize the string using %f s\n", T_SEC());
 
     // Sort the vector of lines
     T_START();
-    sort( lines.begin(), lines.end(), strtab_cmp() );
+        sort( lines.begin(), lines.end(), strtab_cmp() );
     T_END();
     printf("Sorting using %f s\n", T_SEC());
 
