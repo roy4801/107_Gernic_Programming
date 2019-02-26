@@ -7,7 +7,12 @@
 #include <string>
 #include <ctime>
 
-#define TIME
+#if defined(__APPLE__)
+#include <unistd.h>
+#endif
+
+#define TIME_TEST
+#include <calcTime.h>
 
 using namespace std;
 
@@ -37,6 +42,8 @@ struct  strtab_print
 
 int main()
 {
+    setvbuf(stdout, NULL, _IONBF, 0);
+
     vector<char>  strtab;	   // Create string table
     char  c;
 
@@ -45,10 +52,11 @@ int main()
     }
 
     // Parse the string table into lines.
-    typedef  vector<char>::iterator  strtab_iterator;
+    using strtab_iterator = vector<char>::iterator;
     vector<pair<strtab_iterator, strtab_iterator>> lines;
     strtab_iterator  start = strtab.begin();
 
+    T_START();
     while (start != strtab.end()) {
         strtab_iterator  next = find( start, strtab.end(), '\n' );
 
@@ -57,6 +65,8 @@ int main()
         lines.push_back( make_pair( start, next ) );
         start = next;
     }
+    T_END();
+    printf("Pass = %f\n", getSec());
 
     // Sort the vector of lines
     sort( lines.begin(), lines.end(), strtab_cmp() );
