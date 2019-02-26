@@ -81,13 +81,13 @@ int main()
             start = next;
         }
     T_END();
-    printf("Tokenize the string using %f s\n", T_SEC());
+    T_SEC("Tokenize the string");
 
     // Sort the vector of lines
     T_START();
         sort( lines.begin(), lines.end(), strtab_cmp() );
     T_END();
-    printf("Sorting using %f s\n", T_SEC());
+    T_SEC("Sorting");
 
     // Write the lines to standard output
     // for_each( lines.begin(), lines.end(), strtab_print(cout) );
