@@ -20,6 +20,9 @@
 #define TIME_TEST
 #include <calcTime.h>
 
+
+#include <rand.h>
+
 using namespace std;
 
 struct  strtab_cmp
@@ -39,7 +42,7 @@ struct  strtab_print
 
     strtab_print(ostream&  os) : out (os) {}
 
-    void  operator()( const pair<strtab_iterator, strtab_iterator>&  s ) const {
+    void operator()( const pair<strtab_iterator, strtab_iterator>&  s ) const {
         copy( s.first, s.second, ostream_iterator<char>(cout) );
     }
 };
@@ -51,8 +54,12 @@ int main()
     setvbuf(stdout, NULL, _IONBF, 0);
     #endif
 
+    init_rand();
+    gen_str_to_file("testcase.txt",50,1000);
+
+
     vector<char>  strtab;	   // Create string table
-    char  c;
+    char c;
 
     while (cin.get(c)) {
         strtab.PB(c);

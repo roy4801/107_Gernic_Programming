@@ -11,7 +11,7 @@ g++ %COMPILER% -I.. main.cpp -o main.exe
 
 if %ERRORLEVEL% EQU 0 (
 	echo Complete.
-	main.exe < in
+	main.exe
 )
 
 popd %1
