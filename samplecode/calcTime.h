@@ -1,7 +1,9 @@
 #pragma once
 
+#include <iostream>
 #include <vector>
 #include <ctime>
+#include <cstring>
 
 #ifdef TIME_TEST
 	#define T_START() _timeStart()
@@ -13,7 +15,7 @@
         std::sprintf(buf, (fmt), ##__VA_ARGS__); \
         std::sprintf(buf2, " [Used %d tick]\n", _getTick()); \
         std::strcat(buf, buf2); \
-        printf("[*] %s", buf); \
+        std::printf("[*] %s", buf); \
     } \
     while(0)
 	#define T_SEC(fmt, ...)  \
@@ -23,7 +25,7 @@
         std::sprintf(buf, (fmt), ##__VA_ARGS__); \
         std::sprintf(buf2, " [Used %.3f s]\n", _getSec()); \
         std::strcat(buf, buf2); \
-        printf("[*] %s", buf); \
+        std::printf("[*] %s", buf); \
     } \
     while(0)
 #else

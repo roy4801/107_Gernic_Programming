@@ -1,0 +1,50 @@
+100 100
+[*] Tokenize the string [Used 0.002 s]
+[*] Sorting [Used 0.002 s]
+
+
+100 1000
+[*] Tokenize the string [Used 0.012 s]
+[*] Sorting [Used 0.013 s]
+
+
+100 10000
+[*] Tokenize the string [Used 0.121 s]
+[*] Sorting [Used 0.130 s]
+
+
+100 100000
+[*] Tokenize the string [Used 1.217 s]
+[*] Sorting [Used 1.304 s]
+
+
+100 1000000
+[*] Tokenize the string [Used 11.868 s]
+[*] Sorting [Used 12.718 s]
+
+
+100 100
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.001 s]
+
+
+1000 100
+[*] Tokenize the string [Used 0.011 s]
+[*] Sorting [Used 0.012 s]
+
+
+10000 100
+[*] Tokenize the string [Used 0.117 s]
+[*] Sorting [Used 0.125 s]
+
+
+100000 100
+[*] Tokenize the string [Used 1.187 s]
+[*] Sorting [Used 1.258 s]
+
+
+1000000 100
+[*] Tokenize the string [Used 11.918 s]
+[*] Sorting [Used 12.664 s]
+
+

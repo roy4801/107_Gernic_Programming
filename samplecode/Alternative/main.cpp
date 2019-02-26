@@ -7,8 +7,6 @@
 #include <string>
 #include <ctime>
 
-
-#define TIME
 #define PB push_back
 #define MP make_pair
 #define P pair
@@ -19,8 +17,6 @@
 
 #define TIME_TEST
 #include <calcTime.h>
-
-
 #include <rand.h>
 
 using namespace std;
@@ -47,18 +43,14 @@ struct  strtab_print
     }
 };
 
-
 int main()
 {
     #if defined(__APPLE__)
     setvbuf(stdout, NULL, _IONBF, 0);
     #endif
-
-    init_rand();
-    gen_str_to_file("testcase.txt",50,1000);
-
-
-    vector<char>  strtab;	   // Create string table
+    
+    // Create string table
+    vector<char>  strtab;
     char c;
 
     while (cin.get(c)) {
