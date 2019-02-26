@@ -7,11 +7,11 @@ set LIBS=
 pushd %1
 echo Compiling...
 
-g++ %COMPILER% main.cpp -o main.exe
+g++ %COMPILER% -I.. main.cpp -o main.exe
 
 if %ERRORLEVEL% EQU 0 (
 	echo Complete.
-	main.exe
+	main.exe < in
 )
 
 popd %1

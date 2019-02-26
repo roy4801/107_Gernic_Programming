@@ -7,13 +7,20 @@
 #include <string>
 #include <ctime>
 
+
 #define TIME
 #define PB push_back
 #define MP make_pair
 #define P pair
 
-using namespace std;
+#if defined(__APPLE__)
+#include <unistd.h>
+#endif
 
+#define TIME_TEST
+#include <calcTime.h>
+
+using namespace std;
 
 struct  strtab_cmp
 {
@@ -40,18 +47,24 @@ struct  strtab_print
 
 int main()
 {
-    vector <char> strtab;	   // Create string table
-    typedef  vector<char>::iterator  strtab_iterator;
-    char c;
+    #if defined(__APPLE__)
+    setvbuf(stdout, NULL, _IONBF, 0);
+    #endif
+
+    vector<char>  strtab;	   // Create string table
+    char  c;
 
     while (cin.get(c)) {
         strtab.PB(c);
     }
 
     // Parse the string table into lines.
-    vector< P<strtab_iterator, strtab_iterator> > lines;
+    using strtab_iterator = vector<char>::iterator;
+    vector<pair<strtab_iterator, strtab_iterator>> lines;
+
     strtab_iterator  start = strtab.begin();
 
+    T_START();
     while (start != strtab.end()) {
         strtab_iterator next = find( start, strtab.end(), '\n' );
 
@@ -60,20 +73,11 @@ int main()
         lines.PB(MP( start, next ) );
         start = next;
     }
-
-    #ifdef TIME
-    clock_t t;
-    t = clock();
-    #endif
+    T_END();
+    printf("Pass = %f\n", getSec());
 
     // Sort the vector of lines
     sort( lines.begin(), lines.end(), strtab_cmp() );//function object
-
-    #ifdef TIME
-    t = clock() - t;
-    cout << "sort time:" << ((float) t)/CLOCKS_PER_SEC << " seconds.\n";
-    t = clock();
-    #endif
 
     // Write the lines to standard output
     for_each( lines.begin(), lines.end(), strtab_print(cout) );

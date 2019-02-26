@@ -1,6 +1,6 @@
 CXX = g++
 CFLAGS = -Wall -std=c++11
-INCLUDE =
+INCLUDE = -I.
 LIBS =
 
 .PHONY:clean alternative iterator
