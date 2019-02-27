@@ -21,17 +21,17 @@
 
 using namespace std;
 
-struct  strtab_cmp
+struct strtab_cmp
 {
     typedef  vector<char>::iterator  strtab_iterator;
 
-    bool  operator()( const pair<strtab_iterator, strtab_iterator>& x,
+    bool operator()( const pair<strtab_iterator, strtab_iterator>& x,
                        const pair<strtab_iterator, strtab_iterator>& y ) const {
         return lexicographical_compare( x.first, x.second, y.first, y.second );
     }
 };
 
-struct  strtab_print
+struct strtab_print
 {
     typedef  vector<char>::iterator strtab_iterator;
     ostream& out;
@@ -48,9 +48,9 @@ int main()
     #if defined(__APPLE__)
     setvbuf(stdout, NULL, _IONBF, 0);
     #endif
-    
+
     // Create string table
-    vector<char>  strtab;
+    vector <char> strtab;
     char c;
 
     while (cin.get(c)) {

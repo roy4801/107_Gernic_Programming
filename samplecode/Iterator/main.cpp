@@ -7,7 +7,10 @@
 #include <string>
 #include <ctime>
 
-#define TIME
+#define TIME_TEST
+#include <calcTime.h>
+#include <rand.h>
+
 
 using namespace std;
 
@@ -58,17 +61,24 @@ public:
 
 int  main()
 {
+
     clock_t start = clock();
 
+    T_START();
     line_iterator  iter(cin);
     line_iterator  end_of_file;
-
     vector<string>  V(iter, end_of_file);
+    T_END();
+    T_SEC("Tokenize the string");
 
+    T_START();
     sort( V.begin(), V.end() ); // sort( V.begin(), V.end(), greater<string>() );
-    copy( V.begin(), V.end(), ostream_iterator<string>(cout, "\n"));
+    T_END();
+    T_SEC("Sorting");
 
-    cout << ((float)clock() - start) / CLOCKS_PER_SEC << " sec" << endl;
+    // copy( V.begin(), V.end(), ostream_iterator<string>(cout, "\n"));
+
+    // cout << ((float)clock() - start) / CLOCKS_PER_SEC << " sec" << endl;
 
     return 0;
 }

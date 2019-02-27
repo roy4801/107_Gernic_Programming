@@ -1,0 +1,41 @@
+
+len:100 line:100
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.000 s]
+
+len:100 line:1000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.007 s]
+
+len:100 line:10000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.091 s]
+
+len:100 line:100000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.997 s]
+
+len:100 line:1000000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 10.148 s]
+
+len:100 line:100
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.000 s]
+
+len:1000 line:100
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.018 s]
+
+len:10000 line:100
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.184 s]
+
+len:100000 line:100
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 1.863 s]
+
+len:1000000 line:100
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 19.868 s]
+
