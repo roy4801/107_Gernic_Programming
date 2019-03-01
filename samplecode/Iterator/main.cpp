@@ -59,7 +59,7 @@ public:
     }
 }; // end  of class line_iterator
 
-int  main()
+int main()
 {
 
     clock_t start = clock();
@@ -69,12 +69,19 @@ int  main()
     line_iterator  end_of_file;
     vector<string>  V(iter, end_of_file);
     T_END();
-    T_SEC("Tokenize the string");
+
+    /* Change the setting*/
+    // T_SEC("Tokenize the string");
+    T_SEC_gnu();
 
     T_START();
     sort( V.begin(), V.end() ); // sort( V.begin(), V.end(), greater<string>() );
     T_END();
-    T_SEC("Sorting");
+
+    /* Change the setting*/
+    // T_SEC("Sorting");
+    T_SEC_gnu();
+
 
     // copy( V.begin(), V.end(), ostream_iterator<string>(cout, "\n"));
 

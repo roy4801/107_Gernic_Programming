@@ -21,7 +21,10 @@ int main() {
     while ( getline(cin, tmp) )
          V.push_back(tmp);
     T_END();
-    T_SEC("Tokenize the string");
+
+    /* Change the setting*/
+    // T_SEC("Tokenize the string");
+    T_SEC_gnu();
 
     // cout << "Input took " << t << " clicks (" << ((float) t)/CLOCKS_PER_SEC << " seconds).\n";
     // t = clock();
@@ -30,7 +33,10 @@ int main() {
     T_START();
     sort( V.begin(), V.end() ); //, greater<string>() );     // Iterator & Algorithm
     T_END();
-    T_SEC("Sorting");
+
+    /* Change the setting*/
+    // T_SEC("Sorting");
+    T_SEC_gnu();
 
     // cout << "Sorting took " << t << " clicks (" << ((float) t)/CLOCKS_PER_SEC << " seconds).\n";
     // t = clock();

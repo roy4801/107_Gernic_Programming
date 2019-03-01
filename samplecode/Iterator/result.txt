@@ -1,41 +1,61 @@
-
-len:100 line:100
+result:
+len:100, line:1000
 [*] Tokenize the string [Used 0.000 s]
-[*] Sorting [Used 0.003 s]
+[*] Sorting [Used 0.010 s]
 
-len:100 line:1000
+len:500, line:1000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.047 s]
+
+len:1000 line:1000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.118 s]
+
+len:100, line:5000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.050 s]
+
+len:500, line:5000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.251 s]
+
+len:1000 line:5000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.537 s]
+
+len:100, line:10000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.105 s]
+
+len:500, line:10000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.476 s]
+
+len:1000 line:10000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 1.077 s]
+
+len:100, line:50000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 0.498 s]
+
+len:500, line:50000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 2.537 s]
+
+len:1000 line:50000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 4.891 s]
+
+len:100, line:100000
+[*] Tokenize the string [Used 0.000 s]
+[*] Sorting [Used 1.001 s]
+
+len:500, line:100000
 [*] Tokenize the string [Used 0.001 s]
-[*] Sorting [Used 0.016 s]
+[*] Sorting [Used 5.096 s]
 
-len:100 line:10000
+len:1000 line:100000
 [*] Tokenize the string [Used 0.000 s]
-[*] Sorting [Used 0.124 s]
-
-len:100 line:100000
-[*] Tokenize the string [Used 0.001 s]
-[*] Sorting [Used 1.274 s]
-
-len:100 line:1000000
-[*] Tokenize the string [Used 0.001 s]
-[*] Sorting [Used 10.971 s]
-
-len:100 line:100
-[*] Tokenize the string [Used 0.000 s]
-[*] Sorting [Used 0.000 s]
-
-len:1000 line:100
-[*] Tokenize the string [Used 0.000 s]
-[*] Sorting [Used 0.019 s]
-
-len:10000 line:100
-[*] Tokenize the string [Used 0.000 s]
-[*] Sorting [Used 0.197 s]
-
-len:100000 line:100
-[*] Tokenize the string [Used 0.000 s]
-[*] Sorting [Used 1.896 s]
-
-len:1000000 line:100
-[*] Tokenize the string [Used 0.000 s]
-[*] Sorting [Used 19.687 s]
+[*] Sorting [Used 11.915 s]
 

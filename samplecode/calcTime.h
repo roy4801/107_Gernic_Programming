@@ -28,6 +28,14 @@
         std::printf("[*] %s", buf); \
     } \
     while(0)
+
+    #define T_SEC_gnu()  \
+    do \
+    {  \
+        std::printf("%.3f ", _getSec()); \
+    } \
+    while(0)
+
 #else
 	#define T_START()
 	#define T_END()

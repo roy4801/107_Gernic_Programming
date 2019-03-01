@@ -73,13 +73,20 @@ int main()
             start = next;
         }
     T_END();
-    T_SEC("Tokenize the string");
+
+
+    /* Change the setting*/
+    // T_SEC("Tokenize the string");
+    T_SEC_gnu();
 
     // Sort the vector of lines
     T_START();
         sort( lines.begin(), lines.end(), strtab_cmp() );
     T_END();
-    T_SEC("Sorting");
+
+    /* Change the setting*/
+    // T_SEC("Sorting");
+    T_SEC_gnu();
 
     // Write the lines to standard output
     // for_each( lines.begin(), lines.end(), strtab_print(cout) );
