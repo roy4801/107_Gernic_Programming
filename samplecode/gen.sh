@@ -1,10 +1,28 @@
 #!/bin/bash
 
-Color_Off='\033[0m'
-COLOR_GREEN='\e[0;32m'
-COLOR_RED='\e[0;31m'
+COLOR_OFF=$'\033[0m'
+COLOR_GREEN=$'\e[0;32m'
+COLOR_RED=$'\e[0;31m'
 
 # check the C-code need to switch mode
+
+function info()
+{
+	echo -e "${COLOR_GREEN}$1${COLOR_OFF}"
+}
+
+function warn()
+{
+	echo -e "${COLOR_RED}$1${COLOR_OFF}"
+}
+
+# print func
+# Usage: print <msg>
+# It will replace "/rd/" with "${COLOR_RED}" and "/ge/" with "${COLOR_GREEN}"
+function print()
+{
+	echo -e "$(echo $1 | sed -e "s/\/rd\//${COLOR_RED}/g" -e "s/\/ge\//${COLOR_GREEN}/g")${COLOR_OFF}"
+}
 
 function reset-nl()
 {
@@ -18,7 +36,7 @@ function nl()
 	./gen_test ${M[$len]} ${N[$line]}
 	echo "len:${M[$len]} line:${N[$line]}" >> result.txt
 	./main < testcase.txt >> result.txt
-	echo -e "${COLOR_GREEN}Completed.${Color_Off}"
+	info "Completed."
 	echo >> result.txt
 }
 
@@ -31,7 +49,7 @@ function nl_gnu()
 	./gen_test ${M[$len]} ${N[$line]}
 	./main < testcase.txt
 	echo >> gnu.txt
-	echo -e "${COLOR_GREEN}Completed.${Color_Off}"
+	info "Completed."
 	# echo >> gnu.txt
 }
 
@@ -40,20 +58,17 @@ function reset-nl_gnu()
 	echo -n "" > gnu.txt
 }
 
+pushd $1 > /dev/null
 
-pushd $1
-
-
-echo -e "${COLOR_RED}Compiling ${COLOR_GREEN}gen_test ...${Color_Off}"
-
+print "/rd/Compiling /ge/gen_test ..."
 g++ -std=c++11 -I.. gen_test.cpp -o gen_test
 if [[ "$?" == "0" ]]; then
-	echo -e "${COLOR_GREEN}gen_test Completed.${Color_Off}"
+	info "gen_test Completed."
 fi
 
 g++ -std=c++11 -I.. main.cpp -o main
 if [[ "$?" == "0" ]]; then
-	echo -e "${COLOR_GREEN}main Completed.${Color_Off}"
+	info "main Completed."
 fi
 
 sleep 1s
