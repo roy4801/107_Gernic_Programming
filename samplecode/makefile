@@ -5,35 +5,21 @@ LIBS =
 
 .PHONY:clean alternative iterator simple
 
-all : plot
+all : alternative iterator simple plot
 
-plot: alternative iterator simple
+plot: Alternative/gnu.txt Iterator/gnu.txt Simple/gnu.txt
 	cp Alternative/gnu.txt result/Alternative/data.txt
 	cp Iterator/gnu.txt result/Iterator/data.txt
 	cp Simple/gnu.txt result/Simple/data.txt
-	# Plot Alternative
-	pushd Alternative/ > /dev/null
-	gnuplot plot.gp
-	popd > /dev/null
-	# Plot Iterator
-	pushd Iterator/ > /dev/null
-	gnuplot plot.gp
-	popd > /dev/null
-	# Plot Simple
-	pushd Simple/ > /dev/null
-	gnuplot plot.gp
-	popd > /dev/null
+	./plot.sh
 
 alternative:
-	${CXX} ${CFLAGS} ${INCLUDE} ${LIBS} Alternative/main.cpp -o Alternative/main
 	./gen.sh Alternative
 
 iterator:
-	${CXX} ${CFLAGS} ${INCLUDE} ${LIBS} Iterator/main.cpp -o Iterator/main
 	./gen.sh Iterator
 
 simple:
-	${CXX} ${CFLAGS} ${INCLUDE} ${LIBS} Simple/main.cpp -o Simple/main
 	./gen.sh Simple
 
 clean:
