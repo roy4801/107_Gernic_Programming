@@ -4,6 +4,8 @@
 #include <vector>
 #include <ctime>
 #include <cstring>
+#include <fstream>
+#include <iomanip>
 
 #ifdef TIME_TEST
 	#define T_START() _timeStart()
@@ -32,7 +34,8 @@
     #define T_SEC_gnu()  \
     do \
     {  \
-        std::printf("%.3f ", _getSec()); \
+        std::ofstream out("./gnu.txt",ios_base::out|ios_base::app); \
+        out <<  std::fixed << std::setprecision(7) << _getSec() << ' '; \
     } \
     while(0)
 

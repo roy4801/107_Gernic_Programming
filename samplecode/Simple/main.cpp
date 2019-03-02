@@ -17,6 +17,8 @@ int main() {
     vector<string> V;      // Container
     string tmp;
 
+
+    //input
     T_START();
     while ( getline(cin, tmp) )
          V.push_back(tmp);
@@ -38,13 +40,16 @@ int main() {
     // T_SEC("Sorting");
     T_SEC_gnu();
 
+    T_START();
     // cout << "Sorting took " << t << " clicks (" << ((float) t)/CLOCKS_PER_SEC << " seconds).\n";
     // t = clock();
 
-    // copy( V.begin(), V.end(), ostream_iterator<string>(cout, "\n") );
+    copy( V.begin(), V.end(), ostream_iterator<string>(cout, "\n") );
 
-    //cout << "Output took " << t << " clicks (" << ((float) t)/CLOCKS_PER_SEC << " seconds).\n";
+    // cout << "Output took " << t << " clicks (" << ((float) t)/CLOCKS_PER_SEC << " seconds).\n";
+    T_END();
 
+    T_SEC_gnu();
     return 0;
 }
 

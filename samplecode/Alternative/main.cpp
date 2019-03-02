@@ -53,9 +53,13 @@ int main()
     vector <char> strtab;
     char c;
 
+    T_START();
     while (cin.get(c)) {
         strtab.PB(c);
     }
+    T_END();
+
+    T_SEC_gnu();
 
     // Parse the string table into lines.
     using strtab_iterator = vector<char>::iterator;
@@ -89,7 +93,11 @@ int main()
     T_SEC_gnu();
 
     // Write the lines to standard output
-    // for_each( lines.begin(), lines.end(), strtab_print(cout) );
+
+    T_START();
+    for_each( lines.begin(), lines.end(), strtab_print(cout) );
+    T_END();
+    T_SEC_gnu();
 
     return 0;
 }

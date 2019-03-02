@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 Color_Off='\033[0m'
 COLOR_GREEN='\e[0;32m'
 COLOR_RED='\e[0;31m'
@@ -30,7 +29,7 @@ function nl_gnu()
 	echo -n " " >> gnu.txt
 	((alpht++))
 	./gen_test ${M[$len]} ${N[$line]}
-	./main < testcase.txt >> gnu.txt
+	./main < testcase.txt
 	echo >> gnu.txt
 	echo -e "${COLOR_GREEN}Completed.${Color_Off}"
 	# echo >> gnu.txt
@@ -62,11 +61,11 @@ sleep 1s
 reset-nl_gnu;
 # reset-nl;
 
-N=("1000" "5000" "10000" "50000" "100000")
+N=("1000" "5000" "10000" "50000" "100000" "500000")
 M=("100", "500", "1000")
 alpht=65
 
-for line in 0 1 2 3 4
+for line in 0 1 2 3 4 5
 do
 	for len in 0 1 2
 		do

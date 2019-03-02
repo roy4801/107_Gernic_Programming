@@ -83,8 +83,11 @@ int main()
     T_SEC_gnu();
 
 
-    // copy( V.begin(), V.end(), ostream_iterator<string>(cout, "\n"));
+    T_START();
+    copy( V.begin(), V.end(), ostream_iterator<string>(cout, "\n"));
+    T_END();
 
+    T_SEC_gnu();
     // cout << ((float)clock() - start) / CLOCKS_PER_SEC << " sec" << endl;
 
     return 0;
