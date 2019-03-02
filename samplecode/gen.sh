@@ -93,4 +93,4 @@ do
 		done
 done
 
-popd $1
+popd
