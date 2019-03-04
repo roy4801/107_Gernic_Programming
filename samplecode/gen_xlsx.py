@@ -12,8 +12,12 @@ def getOutputPath(path):
 	global g_output_path
 	g_output_path = path
 
+g_file_name = {'line': 'gnu_line.txt', 'len': 'gnu_len.txt'}
+g_type = ['line', 'len']
 def process():
-	pass
+	for i in g_input_list:
+		for j in g_type:
+			print('{} {}'.format(i, j))
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Process the output time data into xlsx')
