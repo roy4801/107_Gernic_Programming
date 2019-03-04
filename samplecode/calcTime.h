@@ -53,9 +53,9 @@ void _timeStart()
 	orig = clock();
 }
 
-clock_t _timeEnd()
+void _timeEnd()
 {
-	return clock() - orig;
+	orig = clock() - orig;
 }
 
 int _getTick()
