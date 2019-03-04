@@ -43,7 +43,7 @@ function nl()
 
 function nl_gnu_len()
 {
-	echo "Testing len : ${M[$len]} line:${N[$line]}"
+	echo "Testing len:${M[$len]} line:${N[$line]}"
 	echo -n $alpht | awk '{printf("%c",$1)}'  >> gnu_len.txt
 	echo -n " " >> gnu_len.txt
 	((alpht++))
@@ -56,7 +56,7 @@ function nl_gnu_len()
 
 function nl_gnu_line()
 {
-	echo "Testing len :line:${N[$line]} ${M[$len]}"
+	echo "Testing line:${N[$line]} len:${M[$len]}"
 	echo -n $alpht | awk '{printf("%c",$1)}'  >> gnu_line.txt
 	echo -n " " >> gnu_line.txt
 	((alpht++))

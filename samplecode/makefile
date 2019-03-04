@@ -7,7 +7,7 @@ LIBS =
 
 all : alternative iterator simple plot
 
-plot: Alternative/gnu.txt Iterator/gnu.txt Simple/gnu.txt
+plot: Alternative/gnu_len.txt Iterator/gnu_len.txt Simple/gnu_len.txt Alternative/gnu_line.txt Iterator/gnu_line.txt Simple/gnu_line.txt
 	cp Alternative/gnu_len.txt result/Alternative/data_len.txt
 	cp Iterator/gnu_len.txt result/Iterator/data_len.txt
 	cp Simple/gnu_len.txt result/Simple/data_len.txt
