@@ -4,6 +4,7 @@ COLOR_OFF=$'\033[0m'
 COLOR_GREEN=$'\e[0;32m'
 COLOR_RED=$'\e[0;31m'
 
+
 # check the C-code need to switch mode
 
 function info()
@@ -40,22 +41,36 @@ function nl()
 	echo >> result.txt
 }
 
-function nl_gnu()
+function nl_gnu_len()
 {
 	echo "Testing len : ${M[$len]} line:${N[$line]}"
-	echo -n $alpht | awk '{printf("%c",$1)}'  >> gnu.txt
-	echo -n " " >> gnu.txt
+	echo -n $alpht | awk '{printf("%c",$1)}'  >> gnu_len.txt
+	echo -n " " >> gnu_len.txt
 	((alpht++))
 	./gen_test ${M[$len]} ${N[$line]}
-	./main < testcase.txt
-	echo >> gnu.txt
+	./main len < testcase.txt
+	echo >> gnu_len.txt
+	info "Completed."
+	# echo >> gnu.txt
+}
+
+function nl_gnu_line()
+{
+	echo "Testing len :line:${N[$line]} ${M[$len]}"
+	echo -n $alpht | awk '{printf("%c",$1)}'  >> gnu_line.txt
+	echo -n " " >> gnu_line.txt
+	((alpht++))
+	./gen_test ${M[$len]} ${N[$line]}
+	./main line < testcase.txt
+	echo >> gnu_line.txt
 	info "Completed."
 	# echo >> gnu.txt
 }
 
 function reset-nl_gnu()
 {
-	echo -n "" > gnu.txt
+	echo -n "" > gnu_line.txt
+	echo -n "" > gnu_len.txt
 }
 
 pushd $1 > /dev/null
@@ -80,16 +95,33 @@ N=("1000" "5000" "10000" "50000" "100000" "500000")
 M=("100", "500", "1000")
 alpht=65
 
-for line in 0 1 2 3 4 5
+# keep the len
+for len in `seq 0 2`;
 do
-	for len in 0 1 2
+	for line in `seq 0 5`
 		do
 
 			# general
 			# nl;
 
 			# gnu-testcase
-			nl_gnu;
+			nl_gnu_len;
+		done
+done
+
+alpht=65
+
+# keep the line
+for line in `seq 0 5`;
+do
+	for len in `seq 0 2`;
+		do
+
+			# general
+			# nl;
+
+			# gnu-testcase
+			nl_gnu_line;
 		done
 done
 

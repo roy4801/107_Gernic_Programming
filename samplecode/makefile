@@ -8,9 +8,12 @@ LIBS =
 all : alternative iterator simple plot
 
 plot: Alternative/gnu.txt Iterator/gnu.txt Simple/gnu.txt
-	cp Alternative/gnu.txt result/Alternative/data.txt
-	cp Iterator/gnu.txt result/Iterator/data.txt
-	cp Simple/gnu.txt result/Simple/data.txt
+	cp Alternative/gnu_len.txt result/Alternative/data_len.txt
+	cp Iterator/gnu_len.txt result/Iterator/data_len.txt
+	cp Simple/gnu_len.txt result/Simple/data_len.txt
+	cp Alternative/gnu_line.txt result/Alternative/data_line.txt
+	cp Iterator/gnu_line.txt result/Iterator/data_line.txt
+	cp Simple/gnu_line.txt result/Simple/data_line.txt
 	./plot.sh
 
 alternative:

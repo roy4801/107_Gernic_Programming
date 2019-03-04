@@ -11,7 +11,6 @@
 #include <calcTime.h>
 #include <rand.h>
 
-
 using namespace std;
 
 class line_iterator
@@ -59,9 +58,8 @@ public:
     }
 }; // end  of class line_iterator
 
-int main()
+int main(int argc, char* argv[])
 {
-
     clock_t start = clock();
 
     T_START();
@@ -72,7 +70,7 @@ int main()
 
     /* Change the setting*/
     // T_SEC("Tokenize the string");
-    T_SEC_gnu();
+    T_SEC_gnu(argv[1]);
 
     T_START();
     sort( V.begin(), V.end() ); // sort( V.begin(), V.end(), greater<string>() );
@@ -80,14 +78,13 @@ int main()
 
     /* Change the setting*/
     // T_SEC("Sorting");
-    T_SEC_gnu();
-
+    T_SEC_gnu(argv[1]);
 
     T_START();
     copy( V.begin(), V.end(), ostream_iterator<string>(cout, "\n"));
     T_END();
 
-    T_SEC_gnu();
+    T_SEC_gnu(argv[1]);
     // cout << ((float)clock() - start) / CLOCKS_PER_SEC << " sec" << endl;
 
     return 0;

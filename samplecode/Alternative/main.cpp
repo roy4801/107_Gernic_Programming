@@ -43,7 +43,7 @@ struct strtab_print
     }
 };
 
-int main()
+int main(int argc, char* argv[])
 {
     #if defined(__APPLE__)
     setvbuf(stdout, NULL, _IONBF, 0);
@@ -59,7 +59,7 @@ int main()
     }
     T_END();
 
-    T_SEC_gnu();
+    T_SEC_gnu(argv[1]);
 
     // Parse the string table into lines.
     using strtab_iterator = vector<char>::iterator;
@@ -81,7 +81,7 @@ int main()
 
     /* Change the setting*/
     // T_SEC("Tokenize the string");
-    T_SEC_gnu();
+    T_SEC_gnu(argv[1]);
 
     // Sort the vector of lines
     T_START();
@@ -90,14 +90,14 @@ int main()
 
     /* Change the setting*/
     // T_SEC("Sorting");
-    T_SEC_gnu();
+    T_SEC_gnu(argv[1]);
 
     // Write the lines to standard output
 
     T_START();
     for_each( lines.begin(), lines.end(), strtab_print(cout) );
     T_END();
-    T_SEC_gnu();
+    T_SEC_gnu(argv[1]);
 
     return 0;
 }

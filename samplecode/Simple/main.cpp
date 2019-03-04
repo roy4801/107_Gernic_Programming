@@ -13,7 +13,7 @@
 
 using namespace std;
 
-int main() {
+int main(int argc, char* argv[]) {
     vector<string> V;      // Container
     string tmp;
 
@@ -26,7 +26,7 @@ int main() {
 
     /* Change the setting*/
     // T_SEC("Tokenize the string");
-    T_SEC_gnu();
+    T_SEC_gnu(argv[1]);
 
     // cout << "Input took " << t << " clicks (" << ((float) t)/CLOCKS_PER_SEC << " seconds).\n";
     // t = clock();
@@ -38,7 +38,7 @@ int main() {
 
     /* Change the setting*/
     // T_SEC("Sorting");
-    T_SEC_gnu();
+    T_SEC_gnu(argv[1]);
 
     T_START();
     // cout << "Sorting took " << t << " clicks (" << ((float) t)/CLOCKS_PER_SEC << " seconds).\n";
@@ -49,7 +49,7 @@ int main() {
     // cout << "Output took " << t << " clicks (" << ((float) t)/CLOCKS_PER_SEC << " seconds).\n";
     T_END();
 
-    T_SEC_gnu();
+    T_SEC_gnu(argv[1]);
     return 0;
 }
 

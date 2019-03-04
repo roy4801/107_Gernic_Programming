@@ -31,10 +31,10 @@
     } \
     while(0)
 
-    #define T_SEC_gnu()  \
+    #define T_SEC_gnu(x)  \
     do \
     {  \
-        std::ofstream out("./gnu.txt",ios_base::out|ios_base::app); \
+        std::ofstream out("./gnu_"+ std::string(x) +".txt" ,ios_base::out|ios_base::app); \
         out <<  std::fixed << std::setprecision(7) << _getSec() << ' '; \
     } \
     while(0)
