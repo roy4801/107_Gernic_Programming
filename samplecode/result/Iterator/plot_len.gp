@@ -6,7 +6,7 @@ set title 'Iterator time'
 set term png enhanced font 'Verdana,15'
 set output 'len.png'
 
-plot [:][:100]'data_len.txt' using 2:xtic(1) with linespoints title 'input', \
+plot [:][:30]'data_len.txt' using 2:xtic(1) with linespoints title 'input', \
 '' using 3:xtic(1) with linespoints title 'Sorting time'  , \
 '' using 4:xtic(1) with linespoints title 'output'  , \
 # '' using ($0):($1+100000):($2+100000) with labels title '', \

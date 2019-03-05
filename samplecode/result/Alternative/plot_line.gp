@@ -5,7 +5,7 @@ set title 'Alternative time'
 set term png enhanced font 'Verdana,15'
 set output 'line.png'
 
-plot [:][:60]'data_line.txt' using 2:xtic(1) with linespoints title 'input', \
+plot [:][:30]'data_line.txt' using 2:xtic(1) with linespoints title 'input', \
 '' using 3:xtic(1) with linespoints title 'Character Table Creation'  , \
 '' using 4:xtic(1) with linespoints title 'Sorting time'  , \
 '' using 5:xtic(1) with linespoints title 'Output'  , \
