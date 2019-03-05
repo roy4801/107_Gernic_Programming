@@ -89,6 +89,7 @@ def process():
 					for ii in range(len(data)):
 						sheet[POS(1+ii, total_pos+1)] = '=' + POS(1+ii, 4) + '/' + POS(1+ii, 6)
 						sheet[POS(1+ii, total_pos+1)].style = 'Percent'
+						sheet[POS(1+ii, total_pos+1)].number_format = '0x00%'
 
 					print('=== test ===')
 					for row in sheet:
