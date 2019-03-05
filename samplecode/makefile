@@ -3,7 +3,7 @@ CFLAGS = -Wall -std=c++11
 INCLUDE = -I.
 LIBS =
 
-.PHONY:clean alternative iterator simple
+.PHONY:clean clean_all clean_result alternative iterator simple
 
 all : alternative iterator simple plot
 
@@ -31,5 +31,9 @@ clean:
 	rm -f Simple/main Simple/gen_test
 	rm -f Iterator/*.exe Alternative/*.exe Simple/*.exe
 	rm -f Iterator/*.txt Alternative/*.txt Simple/*.txt
+
+clean_result:
 	rm -f result/Iterator/*.png result/Alternative/*.png result/Simple/*.png
 	rm -f result/Iterator/*.txt result/Alternative/*.txt result/Simple/*.txt
+
+clean_all: clean clean_result
