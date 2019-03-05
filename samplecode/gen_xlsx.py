@@ -45,21 +45,28 @@ def process():
 				continue
 			
 			sheet = wb.create_sheet(now)
+			createSheetLabel(sheet, now)
 
 			try:
 				print('>> {}'.format(i))
 				with open('result/' + i + '/' + g_file_name[j], 'r') as f:
-					createSheetLabel(sheet, now)
+					data = [x.split() for x in f.readlines()]
 
-					data = f.readlines()
-
+					# A ~ R
 					for ii in range(len(data)):
 						sheet[POS(ii+1, 0)] = data[ii][0]
+					# actual data
+					for ii in range(len(data)):
+						for jj in range(1, len(data[ii])):
+							# print('{} {}'.format(ii, jj))
+							sheet[POS(ii + 1, jj-1 + 2)] = data[ii][jj]
 
 					print('=== test ===')
 					for row in sheet:
 						for cel in row:
-							print(cel.value)
+							print(cel.value, end=' ')
+						print()
+					print('============')
 			except FileNotFoundError as e:
 				print('Warning: {}'.format(e))
 				pass
