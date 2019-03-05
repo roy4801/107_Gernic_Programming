@@ -28,6 +28,10 @@ iterator:
 simple:
 	./gen.sh Simple
 
+excel:
+	py gen_data_total.py
+	py gen_xlsx.py -i Alternative Iterator Simple -o result
+
 clean:
 	rm -f Alternative/main Alternative/gen_test
 	rm -f Iterator/main Iterator/gen_test

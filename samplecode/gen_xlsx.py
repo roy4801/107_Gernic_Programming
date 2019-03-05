@@ -14,8 +14,8 @@ def getOutputPath(path):
 
 LABEL = {
 	'Alternative': ['result/time(s)', 'input', 'Character Table Creation', 'sorting time', 'output', 'totoal', 'sort/total'],
-	'Iterator': ['input', 'sorting time', 'output', 'total', 'sort/total'],
-	'Simple': ['input', 'sorting time', 'output', 'total', 'sort/total']
+	'Iterator': ['result/time(s)','input', 'sorting time', 'output', 'total', 'sort/total'],
+	'Simple': ['result/time(s)','input', 'sorting time', 'output', 'total', 'sort/total']
 }
 
 CH = string.ascii_uppercase
@@ -79,7 +79,11 @@ def process():
 							# print('{} {}'.format(ii, jj))
 							sheet[POS(ii + 1, jj-1 + 2)] = data[ii][jj]
 					# total
-					total_pos = 6
+					total_pos = 5
+					percent_pos = [3, 5]
+					if i == 'Alternative':
+						total_pos = 6
+						percent_pos = [4, 6]
 					with open('result/' + i + '/data_' + j + '_total.txt', 'r') as tfp:
 						total_lines = [x.split() for x in tfp.readlines()]
 
@@ -87,9 +91,9 @@ def process():
 							sheet[POS(ii+1, total_pos)] = total_lines[ii][1]
 					# sort / total
 					for ii in range(len(data)):
-						sheet[POS(1+ii, total_pos+1)] = '=' + POS(1+ii, 4) + '/' + POS(1+ii, 6)
+						sheet[POS(1+ii, total_pos+1)] = '=' + POS(1+ii, percent_pos[0]) + '/' + POS(1+ii, percent_pos[1])
 						sheet[POS(1+ii, total_pos+1)].style = 'Percent'
-						sheet[POS(1+ii, total_pos+1)].number_format = '0x00%'
+						sheet[POS(1+ii, total_pos+1)].number_format = '00.00%'
 
 					print('=== test ===')
 					for row in sheet:
