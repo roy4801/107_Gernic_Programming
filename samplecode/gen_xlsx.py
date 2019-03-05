@@ -58,7 +58,7 @@ def process():
 			# if dry run, then don't do anything
 			if g_dry:
 				continue
-			
+
 			sheet = wb.create_sheet(now)
 			createSheetLabel(sheet, now)
 
@@ -72,7 +72,7 @@ def process():
 						sheet[POS(ii+1, 0)] = data[ii][0]
 					# description
 					for ii in range(len(MAP[j])):
-						sheet[POS(ii+1, 1)] = MAP[j][ii]	
+						sheet[POS(ii+1, 1)] = MAP[j][ii]
 					# actual data
 					for ii in range(len(data)):
 						for jj in range(1, len(data[ii])):
@@ -113,7 +113,7 @@ if __name__ == '__main__':
 	parser.add_argument('-V', '--version', action='version', version='%(prog)s 0.0.1')
 
 	args = parser.parse_args()
-	
+
 	flag = True
 
 	if args.input:
