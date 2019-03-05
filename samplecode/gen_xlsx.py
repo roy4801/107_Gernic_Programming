@@ -72,7 +72,7 @@ def process():
 						sheet[POS(ii+1, 0)] = data[ii][0]
 					# description
 					for ii in range(len(MAP[j])):
-						sheet[POS(ii+1, 1)] = MAP[j][ii]	
+						sheet[POS(ii+1, 1)] = MAP[j][ii]
 					# actual data
 					for ii in range(len(data)):
 						for jj in range(1, len(data[ii])):
@@ -89,6 +89,7 @@ def process():
 					for ii in range(len(data)):
 						sheet[POS(1+ii, total_pos+1)] = '=' + POS(1+ii, 4) + '/' + POS(1+ii, 6)
 						sheet[POS(1+ii, total_pos+1)].style = 'Percent'
+						sheet[POS(1+ii, total_pos+1)].number_format = '0x00%'
 
 					print('=== test ===')
 					for row in sheet:

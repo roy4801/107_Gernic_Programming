@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Plot Alternative
-
 pushd result/Alternative/ > /dev/null
 echo Ploting Alternative
 gnuplot plot_len.gp
@@ -24,34 +23,34 @@ popd > /dev/null
 
 # sort compare
 pushd result/ > /dev/null
-echo Ploting sort
+echo Ploting sort len
 gnuplot sort_compare_len.gp
 popd > /dev/null
 
 pushd result/ > /dev/null
-echo Ploting sort
+echo Ploting sort line
 gnuplot sort_compare_line.gp
 popd > /dev/null
 
 # input compare
 pushd result/ > /dev/null
-echo Ploting input
+echo Ploting input len
 gnuplot input_compare_len.gp
 popd > /dev/null
 
 pushd result/ > /dev/null
-echo Ploting input
+echo Ploting input line
 gnuplot input_compare_line.gp
 popd > /dev/null
 
 
 # output compare
 pushd result/ > /dev/null
-echo Ploting output
+echo Ploting output len
 gnuplot output_compare_len.gp
 popd > /dev/null
 
 pushd result/ > /dev/null
-echo Ploting output
+echo Ploting output line
 gnuplot output_compare_line.gp
 popd > /dev/null
