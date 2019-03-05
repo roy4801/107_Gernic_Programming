@@ -14,8 +14,8 @@ def getOutputPath(path):
 
 LABEL = {
 	'Alternative': ['result/time(s)', 'input', 'Character Table Creation', 'sorting time', 'output', 'totoal', 'sort/total'],
-	'Iterator': [],
-	'Simple': []
+	'Iterator': ['input', 'sorting time', 'output', 'total', 'sort/total'],
+	'Simple': ['input', 'sorting time', 'output', 'total', 'sort/total']
 }
 
 CH = string.ascii_uppercase
@@ -28,12 +28,27 @@ def createSheetLabel(st, name):
 	for i in range(len(LABEL[name])):
 		st[POS(0, i+1)] = LABEL[name][i]
 
+MAP = {}
+def getMapAlpha():
+	with open('map_the_alpht.txt', 'r') as map_the_alpht_fp:
+		lines = [x.split(': ') for x in map_the_alpht_fp.readlines()]
+		map_tmp = []
+		for i in range(18):
+			map_tmp.append(lines[i][1].strip())
+		MAP['line'] = map_tmp
+		map_tmp = []
+		for i in range(19, 37):
+			map_tmp.append(lines[i][1].strip())
+		MAP['len'] = map_tmp
+
+
 g_file_name = {'line': 'data_line.txt', 'len': 'data_len.txt'}
 g_type = ['line', 'len']
 def process():
 	'''
 	process the data (line, len) and gen a .xlsx file
 	'''
+	getMapAlpha()
 	wb = Workbook()
 	wb.remove(wb.active)
 	for i in g_input_list:
@@ -55,11 +70,25 @@ def process():
 					# A ~ R
 					for ii in range(len(data)):
 						sheet[POS(ii+1, 0)] = data[ii][0]
+					# description
+					for ii in range(len(MAP[j])):
+						sheet[POS(ii+1, 1)] = MAP[j][ii]	
 					# actual data
 					for ii in range(len(data)):
 						for jj in range(1, len(data[ii])):
 							# print('{} {}'.format(ii, jj))
 							sheet[POS(ii + 1, jj-1 + 2)] = data[ii][jj]
+					# total
+					total_pos = 6
+					with open('result/' + i + '/data_' + j + '_total.txt', 'r') as tfp:
+						total_lines = [x.split() for x in tfp.readlines()]
+
+						for ii in range(len(total_lines)):
+							sheet[POS(ii+1, total_pos)] = total_lines[ii][1]
+					# sort / total
+					for ii in range(len(data)):
+						sheet[POS(1+ii, total_pos+1)] = '=' + POS(1+ii, 4) + '/' + POS(1+ii, 6)
+						sheet[POS(1+ii, total_pos+1)].style = 'Percent'
 
 					print('=== test ===')
 					for row in sheet:

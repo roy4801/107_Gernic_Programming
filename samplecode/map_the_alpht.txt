@@ -1,5 +1,3 @@
-result:
-gen_line
 A: len:100, line:1000
 B: len:500, line:1000
 C: len:1000 line:1000
@@ -19,8 +17,6 @@ P: len:100, line:500000
 Q: len:500, line:500000
 R: len:1000 line:500000
 
-
-gen_len
 A: len:100, line:1000
 B: len:100, line:5000
 C: len:100 line:10000
