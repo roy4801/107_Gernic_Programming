@@ -16,6 +16,9 @@ plot: Alternative/gnu_len.txt Iterator/gnu_len.txt Simple/gnu_len.txt Alternativ
 	cp Simple/gnu_line.txt result/Simple/data_line.txt
 	./plot.sh
 
+plot_test:
+	./plot.sh
+
 alternative:
 	./gen.sh Alternative
 
