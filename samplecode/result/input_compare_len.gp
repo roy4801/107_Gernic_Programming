@@ -1,9 +1,11 @@
 reset
 set ylabel 'time(sec)'
-set xlabel 'len,line'
-set title 'input Compare'
+set xlabel '(len, line)'
+set title 'input Comparison'
 set term png enhanced font 'Verdana,15' size 1280,720
 set output 'input_len.png'
+
+# Key adjustment
 set key reverse Left width 1
 set key at 4,29
 
@@ -22,10 +24,14 @@ set style line 3 \
     linetype 1 linewidth 2 \
     pointtype 7 pointsize 1.0
 
-set xtics rotate by 45 offset -4.0,-3.0
+# rotate x label
+set xtics rotate by 45 offset 0.0,0.0 right font 'Verdana,13' enhanced
 set bmargin 8
+# Lighter grid lines
+set grid ytics lc rgb "#C0C0C0"
 
-plot [:][:30]'./Alternative/data_len.txt' using 2:xtic(1) with linespoints title 'Alternative' linestyle 1, \
+plot [:][:30] \
+'./Alternative/data_len.txt' using 2:xtic(1) with linespoints title 'Alternative' linestyle 1, \
 './Iterator/data_len.txt' using 2:xtic(1) with linespoints title 'Iterator' linestyle 2,\
 './Simple/data_len.txt' using 2:xtic(1) with linespoints title 'Simple' linestyle 3,\
 # '' using ($0):($1+100000):($2+100000) with labels title '', \
