@@ -4,6 +4,7 @@ import argparse, string
 g_input_list = None
 g_output_path = None
 g_dry = False
+g_verbose = False
 def getInputPath(l):
 	global g_input_list
 	g_input_list = l
@@ -95,12 +96,13 @@ def process():
 						sheet[POS(1+ii, total_pos+1)].style = 'Percent'
 						sheet[POS(1+ii, total_pos+1)].number_format = '00.00%'
 
-					print('=== test ===')
-					for row in sheet:
-						for cel in row:
-							print(cel.value, end=' ')
-						print()
-					print('============')
+					if g_verbose:
+						print('=== test ===')
+						for row in sheet:
+							for cel in row:
+								print(cel.value, end=' ')
+							print()
+						print('============')
 			except FileNotFoundError as e:
 				print('Warning: {}'.format(e))
 				pass
@@ -116,6 +118,7 @@ if __name__ == '__main__':
 	parser.add_argument('-i', '--input', metavar='path', help='Set the input data path (Multiple)', nargs='+')
 	parser.add_argument('--dry', help='Dry run', action='store_true')
 	parser.add_argument('-V', '--version', action='version', version='%(prog)s 0.0.1')
+	parser.add_argument('-v', '--verbose', action='store_true', help='Detail output')
 
 	args = parser.parse_args()
 
@@ -127,13 +130,15 @@ if __name__ == '__main__':
 		getOutputPath(args.output)
 
 	g_dry = args.dry
+	g_verbose = args.verbose
 	if args.input and args.output:
 		process()
 		flag = False
-	print('===== test ======')
-	print('args.dry = {}'.format(args.dry))
-	print('args.o = {}'.format(args.output))
-	print('arg.i = {}'.format(args.input))
-	print()
+	if g_verbose:
+		print('===== test ======')
+		print('args.dry = {}'.format(args.dry))
+		print('args.o = {}'.format(args.output))
+		print('arg.i = {}'.format(args.input))
+		print()
 	if flag:
 		parser.print_usage()
