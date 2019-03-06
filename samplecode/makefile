@@ -42,5 +42,6 @@ clean:
 clean_result:
 	rm -f result/Iterator/*.png result/Alternative/*.png result/Simple/*.png
 	rm -f result/Iterator/*.txt result/Alternative/*.txt result/Simple/*.txt
+	rm -f result/*.png
 
 clean_all: clean clean_result

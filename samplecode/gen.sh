@@ -44,9 +44,8 @@ function nl()
 function nl_gnu_len()
 {
 	echo "Testing len:${M[$len]} line:${N[$line]}"
-	echo -n $alpht | awk '{printf("%c",$1)}'  >> gnu_len.txt
+	echo -n "\"(${M[$len]} ${N[$line]})\"" >> gnu_len.txt
 	echo -n " " >> gnu_len.txt
-	((alpht++))
 	./gen_test ${M[$len]} ${N[$line]}
 	./main len < testcase.txt
 	echo >> gnu_len.txt
@@ -56,10 +55,9 @@ function nl_gnu_len()
 
 function nl_gnu_line()
 {
-	echo "Testing line:${N[$line]} len:${M[$len]}"
-	echo -n $alpht | awk '{printf("%c",$1)}'  >> gnu_line.txt
+	echo "Testing len:${M[$len]} line:${N[$line]}"
+	echo -n "\"(${M[$len]} ${N[$line]})\"" >> gnu_line.txt
 	echo -n " " >> gnu_line.txt
-	((alpht++))
 	./gen_test ${M[$len]} ${N[$line]}
 	./main line < testcase.txt
 	echo >> gnu_line.txt
@@ -92,13 +90,12 @@ reset-nl_gnu;
 # reset-nl;
 
 N=("1000" "5000" "10000" "50000" "100000" "500000")
-M=("100", "500", "1000")
-alpht=65
+M=("100" "500" "1000")
 
 # keep the len
 for len in `seq 0 2`;
 do
-	for line in `seq 0 5`
+	for line in `seq 0 5`;
 		do
 
 			# general
@@ -109,7 +106,6 @@ do
 		done
 done
 
-alpht=65
 
 # keep the line
 for line in `seq 0 5`;
