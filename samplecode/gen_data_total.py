@@ -7,7 +7,7 @@ def main():
 		i += '/'
 		for j in f:
 			try:
-				with open('result/' + i + j + '.txt') as inp, open('result/' + i + j + '_total.txt', 'w') as outp:
+				with open('result/' + i + j + '.txt', 'r') as inp, open('result/' + i + j + '_total.txt', 'w') as outp:
 					data = [x.split() for x in inp.readlines()]
 					for ii in range(len(data)):
 						outp.write(data[ii][0] + ' ')
