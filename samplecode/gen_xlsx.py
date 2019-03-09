@@ -30,17 +30,17 @@ def createSheetLabel(st, name):
 		st[POS(0, i+1)] = LABEL[name][i]
 
 MAP = {}
-def getMapAlpha():
+def getMapAlpha(mm):
 	with open('map_the_alpht.txt', 'r') as map_the_alpht_fp:
 		lines = [x.split(': ') for x in map_the_alpht_fp.readlines()]
 		map_tmp = []
 		for i in range(18):
 			map_tmp.append(lines[i][1].strip())
-		MAP['line'] = map_tmp
+		mm['line'] = map_tmp
 		map_tmp = []
 		for i in range(19, 37):
 			map_tmp.append(lines[i][1].strip())
-		MAP['len'] = map_tmp
+		mm['len'] = map_tmp
 
 
 g_file_name = {'line': 'data_line.txt', 'len': 'data_len.txt'}
@@ -49,7 +49,7 @@ def process():
 	'''
 	process the data (line, len) and gen a .xlsx file
 	'''
-	getMapAlpha()
+	getMapAlpha(MAP)
 	wb = Workbook()
 	wb.remove(wb.active)
 	for i in g_input_list:
