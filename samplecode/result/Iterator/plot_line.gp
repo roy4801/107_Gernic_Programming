@@ -1,7 +1,7 @@
 reset
 set ylabel 'time(sec)'
 set xlabel '(len, line)'
-set title 'Iterator time'
+set title 'Iterator time line fixed'
 set term png enhanced font 'Verdana,15' size 1280,720
 set output 'line.png'
 

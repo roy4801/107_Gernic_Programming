@@ -1,7 +1,7 @@
 reset
 set ylabel 'time(sec)'
 set xlabel '(len, line)'
-set title 'Sorting Comparison'
+set title 'Sorting Comparison len fixed'
 set term png enhanced font 'Verdana,15' size 1280,720
 set output 'sort_len.png'
 

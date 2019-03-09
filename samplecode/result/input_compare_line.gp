@@ -1,7 +1,7 @@
 reset
 set ylabel 'time(sec)'
 set xlabel '(len, line)'
-set title 'input Comparison'
+set title 'input Comparison line fixed'
 set term png enhanced font 'Verdana,15' size 1280,720
 set output 'input_line.png'
 
