@@ -30,7 +30,7 @@ set bmargin 8
 # Lighter grid lines
 set grid ytics lc rgb "#C0C0C0"
 
-plot [:][:30]'data_len.txt' using 2:xtic(1) with linespoints title 'input' linestyle 1, \
+plot [:][:30]'data_line.txt' using 2:xtic(1) with linespoints title 'input' linestyle 1, \
 '' using 3:xtic(1) with linespoints title 'Sorting time' linestyle 2, \
 '' using 4:xtic(1) with linespoints title 'output' linestyle 3, \
 
