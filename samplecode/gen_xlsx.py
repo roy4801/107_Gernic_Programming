@@ -67,10 +67,17 @@ def process():
 				print('>> {}'.format(i))
 				with open('result/' + i + '/' + g_file_name[j], 'r') as f:
 					data = [x.split() for x in f.readlines()]
+					'''
+					Only one pop() it's because the label of each data will be spilt into two element
+					e.g.(100, 1000) => ['(100', '1000)']
+					The original implementation has only a aplhabet in the beginning of each line of the data
+					'''
+					for ii in range(len(data)):
+						data[ii].pop(0)
 
 					# A ~ R
 					for ii in range(len(data)):
-						sheet[POS(ii+1, 0)] = data[ii][0]
+						sheet[POS(ii+1, 0)] = CH[ii]
 					# description
 					for ii in range(len(MAP[j])):
 						sheet[POS(ii+1, 1)] = MAP[j][ii]
@@ -85,11 +92,17 @@ def process():
 					if i == 'Alternative':
 						total_pos = 6
 						percent_pos = [4, 6]
-					with open('result/' + i + '/data_' + j + '_total.txt', 'r') as tfp:
-						total_lines = [x.split() for x in tfp.readlines()]
+					total_lines = []
 
-						for ii in range(len(total_lines)):
-							sheet[POS(ii+1, total_pos)] = total_lines[ii][1]
+					for ii in range(len(data)):
+						summ = float(data[ii][1]) + float(data[ii][2]) + float(data[ii][3])
+						if i == 'Alternative':
+							summ += float(data[ii][4])
+						total_lines.append(summ)
+
+					for ii in range(len(total_lines)):
+						sheet[POS(ii+1, total_pos)] = total_lines[ii]
+
 					# sort / total
 					for ii in range(len(data)):
 						sheet[POS(1+ii, total_pos+1)] = '=' + POS(1+ii, percent_pos[0]) + '/' + POS(1+ii, percent_pos[1])

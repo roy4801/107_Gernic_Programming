@@ -29,7 +29,6 @@ simple:
 	./gen.sh Simple
 
 excel: Alternative/data_len.txt Alternative/data_line.txt Iterator/data_len.txt Iterator/data_line.txt Simple/data_len.txt Simple/data_line.txt
-	python3 gen_data_total.py
 	python3 gen_xlsx.py -i Alternative Iterator Simple -o result
 
 clean:
