@@ -54,3 +54,15 @@ pushd result/ > /dev/null
 echo Ploting output line
 gnuplot output_compare_line.gp
 popd > /dev/null
+
+
+# total compare
+pushd result/ > /dev/null
+echo Ploting total len
+gnuplot total_compare_len.gp
+popd > /dev/null
+
+pushd result/ > /dev/null
+echo Ploting total line
+gnuplot total_compare_line.gp
+popd > /dev/null

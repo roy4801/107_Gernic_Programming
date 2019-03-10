@@ -1,4 +1,5 @@
 import string
+import re
 from gen_xlsx import getMapAlpha
 
 MAP = {}
@@ -19,9 +20,9 @@ def main():
                     for ii in range(len(data)):
                         print(data[ii])
                         if j == 'data_len':
-                            outp.write('"({})"'.format(MAP['len'][ii]))
+                            outp.write('"({0[0]} {0[1]})"'.format(re.findall("\d+-*\d*",MAP['len'][ii])))
                         if j == 'data_line':
-                            outp.write('"({})"'.format(MAP['line'][ii]))
+                            outp.write('"({0[0]} {0[1]})"'.format(re.findall("\d+-*\d*",MAP['line'][ii])))
                         outp.write(' ')
                         # sum
                         summ = float(data[ii][2]) + float(data[ii][3]) + float(data[ii][4])
