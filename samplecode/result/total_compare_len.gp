@@ -30,6 +30,6 @@ set bmargin 8
 # Lighter grid lines
 set grid ytics lc rgb "#C0C0C0"
 
-plot [:][:30]'./Alternative/data_len_total.txt' using 2:xtic(1) with linespoints title 'Alternative' linestyle 1, \
+plot [:][:60]'./Alternative/data_len_total.txt' using 2:xtic(1) with linespoints title 'Alternative' linestyle 1, \
 './Iterator/data_len_total.txt' using 2:xtic(1) with linespoints title 'Iterator' linestyle 2,\
 './Simple/data_len_total.txt' using 2:xtic(1) with linespoints title 'Simple' linestyle 3,\
