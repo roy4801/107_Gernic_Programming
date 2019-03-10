@@ -5,7 +5,7 @@ LIBS =
 
 .PHONY:clean clean_all clean_result alternative iterator simple
 
-all : alternative iterator simple plot total plot_test excel 
+all : alternative iterator simple plot total plot_test excel
 
 plot: Alternative/gnu_len.txt Iterator/gnu_len.txt Simple/gnu_len.txt Alternative/gnu_line.txt Iterator/gnu_line.txt Simple/gnu_line.txt
 	cp Alternative/gnu_len.txt result/Alternative/data_len.txt
@@ -16,7 +16,7 @@ plot: Alternative/gnu_len.txt Iterator/gnu_len.txt Simple/gnu_len.txt Alternativ
 	cp Simple/gnu_line.txt result/Simple/data_line.txt
 
 total:
-	python3 gen_total.py 
+	python3 gen_total.py
 
 plot_test:
 	./plot.sh
@@ -30,7 +30,7 @@ iterator:
 simple:
 	./gen.sh Simple
 
-excel: Alternative/data_len.txt Alternative/data_line.txt Iterator/data_len.txt Iterator/data_line.txt Simple/data_len.txt Simple/data_line.txt
+excel: result/Alternative/data_len.txt result/Alternative/data_line.txt result/Iterator/data_len.txt result/Iterator/data_line.txt result/Simple/data_len.txt result/Simple/data_line.txt
 	python3 gen_xlsx.py -i Alternative Iterator Simple -o result
 
 clean:
