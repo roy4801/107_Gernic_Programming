@@ -23,4 +23,5 @@ fi
 g++ -std=c++14 $1/$1.cpp -o $1/$1.out
 if [ "$?" == "0" ]; then
 	./$1/$1.out
+	rm -f ./$1/$1.out
 fi
