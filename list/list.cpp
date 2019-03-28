@@ -2,13 +2,16 @@
 #include <cstdio>
 #include <cstdlib>
 #include <algorithm>
+#include <vector>
+#include <initializer_list>
+#include <string>
 
 using namespace std;
 
 template <typename T>
 struct listNode {
     T data;
-    struct listNode *nextPtr;
+    struct listNode<T> *nextPtr;
     typedef input_iterator_tag iterator_category;
 };
 
@@ -129,88 +132,30 @@ void printList(ListNodePtr<T> currentPtr)
     }
 }
 
-void menu()
+// C++14 feature
+template <typename T>
+void TEST_insert(vector<T> list)
 {
-    cout << "------- Welcome to use list -------" << '\n';
-    cout << "Press '1' insert" << '\n';
-    cout << "Press '2' delete" << '\n';
-    cout << "Press '3' check_empty" << '\n';
-    cout << "Press '4' print_list" << '\n';
-    cout << "Press '5' std::find" << '\n' ;
-    cout << "Press '6' exit " << '\n';
+    ListNodePtr<T> startPtr = nullptr;
+    for (auto &i : list)
+        insert(&startPtr, i);
+    printList(startPtr);
 }
 
 template <typename T>
-void setting_Type()
+vector<T> GET_vec(initializer_list<T> l)
 {
-    ListIter<T> startPtr;
-    ListIter<T> i(startPtr);
-    ListIter<T> end(NULL);
-    ListIter<T> iter = std::find(i, end, data);
-    if (typeid(T) == typeid(int))
-    {
-        if ()
-        {
-            /* code */
-        }
-    }
-    if (typeid(T) == typeid(char))
-    {
-        if ()
-        {
-            /* code */
-        }
-    }
-    if (typeid(T) == typeid(double))
-    {
-        if ()
-        {
-            /* code */
-        }
-    }
+    vector<T> v;
+    for(auto i = l.begin(); i != l.end(); i++)
+        v.push_back(*i);
+    return v;
 }
-
-
 
 int main(void)
 {
-
-    bool flag = 0;
-    int data;
-
-
-    while(1)
-    {
-        if(flag)
-            break;
-
-
-        menu();
-        // setting_Type();
-        listNodePtr<int> start = NULL;
-        // char button;
-
-
-        // cin >> button;
-
-
-
-        insert(&startPtr,1);
-        insert(&startPtr,2);
-        insert(&startPtr,3);
-        del(&startPtr,1);
-
-        ListIter<int> i(startPtr);
-        ListIter<int> end(NULL);
-        ListIter<int> iter = std::find(i, end, data);
-
-        if (iter == NULL)
-            printf("NOT FOUND\n");
-        else
-            printf("FIND\n");
-        }
-
-
-
+    TEST_insert(GET_vec({'a', 'b', 'c', 'd'}));
+    TEST_insert(GET_vec({"Hello", "There", "I'm roy4801", "My teammate is william31212"}));
+    TEST_insert(GET_vec({1, 2, 3, 4}));
+    return 0;
 }
 
