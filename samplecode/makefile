@@ -15,6 +15,7 @@ plot_data: Alternative/gnu_len.txt Iterator/gnu_len.txt Simple/gnu_len.txt Alter
 	cp Iterator/gnu_line.txt result/Iterator/data_line.txt
 	cp Simple/gnu_line.txt result/Simple/data_line.txt
 
+
 gen_total:
 	python3 gen_total.py
 
@@ -30,7 +31,7 @@ iterator:
 simple:
 	./gen.sh Simple
 
-excel: Alternative/data_len.txt Alternative/data_line.txt Iterator/data_len.txt Iterator/data_line.txt Simple/data_len.txt Simple/data_line.txt
+excel: result/Alternative/data_len.txt result/Alternative/data_line.txt result/Iterator/data_len.txt result/Iterator/data_line.txt result/Simple/data_len.txt result/Simple/data_line.txt
 	python3 gen_xlsx.py -i Alternative Iterator Simple -o result
 
 clean:
