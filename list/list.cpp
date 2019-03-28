@@ -104,7 +104,19 @@ T del(ListNodePtr<T> *sPtr, T value)
     return '\0';
 }
 
-// return 1 if the list is empty, 0 otherwise
+template<typename T>
+void deleteList(ListNodePtr<T> sPtr)
+{
+    auto head = sPtr;
+    while(head && head->nextPtr)
+    {
+        auto tmp = head->nextPtr;
+        delete head;
+        head = tmp;
+    }
+    delete head;
+}
+
 template <typename T>
 bool isEmpty(ListNodePtr<T> sPtr)
 {
@@ -132,6 +144,16 @@ void printList(ListNodePtr<T> currentPtr)
     }
 }
 
+// helper func for getting a vector (little syntatic sugar)
+template <typename T>
+vector<T> GET_vec(initializer_list<T> l)
+{
+    vector<T> v;
+    for(auto i = l.begin(); i != l.end(); i++)
+        v.push_back(*i);
+    return v;
+}
+
 // C++14 feature
 template <typename T>
 void TEST_insert(vector<T> list)
@@ -140,15 +162,7 @@ void TEST_insert(vector<T> list)
     for (auto &i : list)
         insert(&startPtr, i);
     printList(startPtr);
-}
-
-template <typename T>
-vector<T> GET_vec(initializer_list<T> l)
-{
-    vector<T> v;
-    for(auto i = l.begin(); i != l.end(); i++)
-        v.push_back(*i);
-    return v;
+    deleteList(startPtr);
 }
 
 int main(void)
