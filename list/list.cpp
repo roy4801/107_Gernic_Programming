@@ -5,6 +5,7 @@
 #include <vector>
 #include <initializer_list>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -24,7 +25,6 @@ using ListNodePtr = listNode<T>*;
 template <class T>
 struct node_wrap : public iterator<input_iterator_tag, T>
 {
-	// typedef input_iterator_tag iterator_category;
 	T* ptr;
 	node_wrap(T* p = nullptr) : ptr(p) { }
 	decltype(ptr->data) operator*() const { return ptr->data; }
@@ -74,13 +74,14 @@ void insert(ListNodePtr<T> *sPtr, T value)
 }
 
 template <typename T>
-T del(ListNodePtr<T> *sPtr, T value)
+bool delete_node(ListNodePtr<T> *sPtr, T value)
 {
+    bool del = false;
     if (value == (*sPtr)->data) {
         ListNodePtr<T> tempPtr = *sPtr; // hold onto node being removed
         *sPtr = (*sPtr)->nextPtr; // de-thread the node
         free(tempPtr); // free the de-threaded node
-        return value;
+        del = true;
     }
     else {
         ListNodePtr<T> previousPtr = *sPtr;
@@ -97,11 +98,15 @@ T del(ListNodePtr<T> *sPtr, T value)
             ListNodePtr<T> tempPtr = currentPtr;
             previousPtr->nextPtr = currentPtr->nextPtr;
             free(tempPtr);
-            return value;
+            del = true;
         }
     }
 
-    return '\0';
+    if(del)
+    {
+        cout << "\nDelete node : " << value << '\n';
+    }
+    return del;
 }
 
 template<typename T>
@@ -136,11 +141,11 @@ void printList(ListNodePtr<T> currentPtr)
 
         // while not the end of the list
         while (currentPtr != NULL) {
-            cout << currentPtr->data << "---> ";
+            cout << fixed << setprecision(2) << currentPtr->data << "---> ";
             currentPtr = currentPtr->nextPtr;
         }
 
-        puts("NULL\n");
+        puts("NULL");
     }
 }
 
@@ -165,24 +170,86 @@ ListNodePtr<T> TEST_insert(vector<T> list)
 }
 
 template <typename T>
-void TEST_find(vector<T> list, T val)
+ListIter<T> TEST_find(ListNodePtr<T> sptr, T val)
 {
+    ListIter<T> head(sptr), end;
+    ListIter<T> i = find(head, end, val);
 
+    if(i != end)
+        cout << "Found : " << *i << '\n';
+    else
+        cout << "Not found : " << val << '\n';
+
+    return i;
+}
+
+void test_char()
+{
+    cout << "=== Test for char ===" << '\n';
+    ListNodePtr<char> i = TEST_insert(GET_vec({'a', 'b', 'c', 'd'}));
+    printList(i);
+
+    delete_node(&i, 'a');
+    printList(i);
+
+    deleteList(i);
+}
+
+void test_string()
+{
+    cout << "=== Test for string ===" << '\n';
+    vector<string> v = {"Hello", "There", "I'm roy4801", "My teammate is william31212"};
+    ListNodePtr<string> i_2 = TEST_insert(v);
+    printList(i_2);
+    // find
+    string s = "There";
+    ListIter<string> end;
+    auto target = TEST_find(i_2, s);
+    // del
+    if(target != end)
+        delete_node(&i_2, s);
+    printList(i_2);
+
+    deleteList(i_2);
+}
+
+void test_int()
+{
+    cout << "=== Test for int ===" << '\n';
+    ListNodePtr<int> i_3 = TEST_insert(GET_vec({1, 2, 3, 4}));
+    printList(i_3);
+    // find
+    TEST_find(i_3, 4);
+    TEST_find(i_3, 5);
+    // del
+    delete_node(&i_3, 4);
+    printList(i_3);
+
+    deleteList(i_3);
+}
+
+void test_double()
+{
+    cout << "=== Test for double ===" << '\n';
+    ListNodePtr<double> i = TEST_insert(GET_vec({1.0, 2.0, 3.0, 4.0, 5.0, 6.0}));
+    printList(i);
+    // find
+    TEST_find(i, 1.0);
+
+    // del
+    delete_node(&i, 1.0);
+    printList(i);
 }
 
 int main(void)
 {
-    ListNodePtr<char> i = TEST_insert(GET_vec({'a', 'b', 'c', 'd'}));
-    printList(i);
-    deleteList(i);
-
-    ListNodePtr<string> i = TEST_insert(GET_vec({"Hello", "There", "I'm roy4801", "My teammate is william31212"}));
-    printList(i);
-    deleteList(i);
-
-    ListNodePtr<int> i = TEST_insert(GET_vec({1, 2, 3, 4}));
-    printList(i);
-    deleteList(i);
+    test_char();
+    puts("");
+    test_string();
+    puts("");
+    test_int();
+    puts("");
+    test_double();
+    puts("");
     return 0;
 }
-
