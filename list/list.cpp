@@ -156,20 +156,33 @@ vector<T> GET_vec(initializer_list<T> l)
 
 // C++14 feature
 template <typename T>
-void TEST_insert(vector<T> list)
+ListNodePtr<T> TEST_insert(vector<T> list)
 {
     ListNodePtr<T> startPtr = nullptr;
     for (auto &i : list)
         insert(&startPtr, i);
-    printList(startPtr);
-    deleteList(startPtr);
+    return startPtr;
+}
+
+template <typename T>
+void TEST_find(vector<T> list, T val)
+{
+
 }
 
 int main(void)
 {
-    TEST_insert(GET_vec({'a', 'b', 'c', 'd'}));
-    TEST_insert(GET_vec({"Hello", "There", "I'm roy4801", "My teammate is william31212"}));
-    TEST_insert(GET_vec({1, 2, 3, 4}));
+    ListNodePtr<char> i = TEST_insert(GET_vec({'a', 'b', 'c', 'd'}));
+    printList(i);
+    deleteList(i);
+
+    ListNodePtr<string> i = TEST_insert(GET_vec({"Hello", "There", "I'm roy4801", "My teammate is william31212"}));
+    printList(i);
+    deleteList(i);
+
+    ListNodePtr<int> i = TEST_insert(GET_vec({1, 2, 3, 4}));
+    printList(i);
+    deleteList(i);
     return 0;
 }
 
