@@ -199,6 +199,7 @@ void test_string()
 {
     cout << "=== Test for string ===" << '\n';
     vector<string> v = {"Hello", "There", "I'm roy4801", "My teammate is william31212"};
+
     ListNodePtr<string> i_2 = TEST_insert(v);
     printList(i_2);
     // find
