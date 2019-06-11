@@ -4,13 +4,14 @@ using namespace std;
 #define PROB "data"
 #define N 100000
 typedef pair<int, int> P;
+typedef pair<int, pair<int, int>> PP;
 #define F first
 #define S second
 #define PB push_back
 #define MP make_pair
 #define INF 0x3f3f3f3f
 int d[N+5];
-int parent[N];
+int parent[N+5];
 vector<P> G[N+5]; // fr, to, wei
 int n, t;
 void dijkstra(int s)
